@@ -1,13 +1,15 @@
-import { createStackNavigator } from 'react-navigation-stack';
+import { createSwitchNavigator } from 'react-navigation';
+import DrawerNavigation from './DrawerNavigation';
 
-import HomeScreen from '../screens/HomeScreen';
-
-export default createStackNavigator(
+export default createSwitchNavigator(
   {
-    HomeScreen: {
-        screen: HomeScreen
-    }
+    Drawer: {
+      screen: DrawerNavigation,
+      path: ''
+    },
   },
   {
-  },
-);
+    //@ts-ignore
+    history: 'hash'
+  }
+)

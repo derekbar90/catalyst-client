@@ -31,5 +31,4 @@ target 'Catalyst' do
   pod 'RNScreens', :path => '../node_modules/react-native-screens'
 
   use_unimodules!
-
 end
