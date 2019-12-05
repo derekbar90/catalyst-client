@@ -1,0 +1,13 @@
+diff --git a/node_modules/@expo/webpack-config/webpack/addons/withWorkbox.js b/node_modules/@expo/webpack-config/webpack/addons/withWorkbox.js
+index e7731b4..574d834 100644
+--- a/node_modules/@expo/webpack-config/webpack/addons/withWorkbox.js
++++ b/node_modules/@expo/webpack-config/webpack/addons/withWorkbox.js
+@@ -65,7 +65,7 @@ function withWorkbox(config, options = {}) {
+         const entries = yield utils_1.resolveEntryAsync(expoEntry);
+         const swPath = path_1.join(locations.production.registerServiceWorker);
+         if (entries.app && !entries.app.includes(swPath) && autoRegister) {
+-            const content = (yield fs_extra_1.readFile(require.resolve(locations.template.registerServiceWorker), 'utf8'))
++            const content = (yield fs_extra_1.readFileSync(locations.template.registerServiceWorker, 'utf8'))
+                 .replace('SW_PUBLIC_URL', publicUrl)
+                 .replace('SW_PUBLIC_SCOPE', scope);
+             yield fs_extra_1.ensureDir(locations.production.folder);

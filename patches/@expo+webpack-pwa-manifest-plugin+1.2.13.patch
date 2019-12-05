@@ -1,0 +1,63 @@
+diff --git a/node_modules/@expo/webpack-pwa-manifest-plugin/build/icons.js b/node_modules/@expo/webpack-pwa-manifest-plugin/build/icons.js
+index f387f23..c23e7d3 100644
+--- a/node_modules/@expo/webpack-pwa-manifest-plugin/build/icons.js
++++ b/node_modules/@expo/webpack-pwa-manifest-plugin/build/icons.js
+@@ -22,6 +22,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const image_utils_1 = require("@expo/image-utils");
+ const fs_extra_1 = __importDefault(require("fs-extra"));
++const fs = __importDefault(require("fs"));
+ const mime_1 = __importDefault(require("mime"));
+ const node_fetch_1 = __importDefault(require("node-fetch"));
+ const path_1 = __importDefault(require("path"));
+@@ -66,9 +67,10 @@ function getBufferWithMimeAsync({ src, resizeMode, color }, mimeType, { width, h
+             imagePath = yield resize(localSrc, mimeType, width, height, resizeMode, color);
+         }
+         try {
+-            return yield fs_extra_1.default.readFile(imagePath);
++            return yield fs_extra_1.default.readFileSync(imagePath, mimeType);
+         }
+         catch (err) {
++            console.log(err);
+             throw new Errors_1.IconError(`It was not possible to read '${src}'.`);
+         }
+     });
+@@ -97,7 +99,7 @@ function ensureCacheDirectory(projectRoot, cacheKey) {
+ function getImageFromCacheAsync(fileName, cacheKey) {
+     return __awaiter(this, void 0, void 0, function* () {
+         try {
+-            return yield fs_extra_1.default.readFile(path_1.default.resolve(cacheKeys[cacheKey], fileName));
++            return yield fs_extra_1.default.readFileSync(path_1.default.resolve(cacheKeys[cacheKey], fileName));
+         }
+         catch (_) {
+             return null;
+@@ -107,7 +109,7 @@ function getImageFromCacheAsync(fileName, cacheKey) {
+ function cacheImageAsync(fileName, buffer, cacheKey) {
+     return __awaiter(this, void 0, void 0, function* () {
+         try {
+-            yield fs_extra_1.default.writeFile(path_1.default.resolve(cacheKeys[cacheKey], fileName), buffer);
++            yield fs_extra_1.default.writeFileSync(path_1.default.resolve(cacheKeys[cacheKey], fileName), buffer);
+         }
+         catch ({ message }) {
+             console.warn(`error caching image: "${fileName}". ${message}`);
+@@ -271,18 +273,9 @@ function clearUnusedCachesAsync(projectRoot) {
+     return __awaiter(this, void 0, void 0, function* () {
+         // Clean up any old caches
+         const cacheFolder = path_1.default.join(projectRoot, '.expo/web/cache/production/images');
+-        const currentCaches = yield fs_extra_1.default.readdir(cacheFolder);
++
+         const deleteCachePromises = [];
+-        for (const cache of currentCaches) {
+-            // skip hidden folders
+-            if (cache.startsWith('.')) {
+-                continue;
+-            }
+-            // delete
+-            if (!(cache in cacheKeys)) {
+-                deleteCachePromises.push(fs_extra_1.default.remove(path_1.default.join(cacheFolder, cache)));
+-            }
+-        }
++
+         yield Promise.all(deleteCachePromises);
+     });
+ }
