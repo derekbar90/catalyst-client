@@ -25,7 +25,7 @@ export class DrawerFooter extends React.Component<Props, State> {
   private renderSignUp = () => {
     return (
       <TouchableOpacity onPress={() => {
-        this.props.navigation.navigate('login', {})
+        dispatch().user.login();
       }}>
         <Text>Sign Up/Login In</Text>
       </TouchableOpacity>
