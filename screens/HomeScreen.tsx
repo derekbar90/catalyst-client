@@ -8,10 +8,13 @@ import {
 import NavigationService from '../navigation/NavigationService';
 import { HomeScreenStyles as style } from './styles/HomeScreenStyle'
 import { Ionicons } from '@expo/vector-icons';
+import { gql, useQuery } from '@apollo/client';
+import { UserList } from '../containers/ListUsers';
 
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
+
 
 
 class HomeScreen extends Component<Props> {
@@ -31,6 +34,7 @@ class HomeScreen extends Component<Props> {
         <View style={style.welcomeContainer}>
           <Text style={style.welcomeHeader}>Welcome to the Catalyst Client!</Text>
           <Text style={style.welcomeText}>This client pairs perfectly with the Calayst project backend. This universal wallet renders on iOS, Android, and Web with OAuth 2.0 login and user store support out the gate.</Text>
+          <UserList />
         </View>
       </View>
     );
