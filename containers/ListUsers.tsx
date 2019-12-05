@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { Text, View } from 'react-native';
-import { iRootState } from '../stores/store';
+import { iRootState, select } from '../stores/store';
 import { useSelector } from 'react-redux';
 
 interface User {
@@ -30,10 +30,14 @@ const GET_USERS = gql`
   }
 `;
 
+const selectMap = models => ({
+  isLoggedIn: models.user.isLoggedIn
+})
 
+const mapState = (state: iRootState) => select(selectMap)(state, null)
 
 export function UserList() {
-  const isLoggedIn = useSelector((state: iRootState) => state.user.accessToken != null)
+  const { isLoggedIn } = useSelector(mapState)
   const { loading, data } = useQuery<GetUsersData, GetUsersVars>(
     GET_USERS,
     {
@@ -56,7 +60,7 @@ export function UserList() {
       </View>
     ) : (
       <View>
-        <Text style={{fontWeight: 'bold'}}>Current Catalyst Users: </Text>
+        <Text style={{fontWeight: 'bold'}}>Current Catalyst Users:</Text>
         {
         data && data.users.map((inventory, key) => (
           <Text key={key}>{inventory.firstName} {inventory.lastName}</Text>

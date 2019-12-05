@@ -9,7 +9,6 @@ import { ApolloClient } from '@apollo/client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from "@apollo/react-hooks"
 import { persistCache } from 'apollo-cache-persist';
-import { config } from './constants/config';
 import { apolloLinks } from './services/graphql/links';
 
 const styles = StyleSheet.create({
