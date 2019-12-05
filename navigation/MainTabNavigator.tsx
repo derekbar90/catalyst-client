@@ -10,9 +10,6 @@ export default createStackNavigator(
     home: {
       screen: HomeScreen
     },
-    login: {
-      screen: LoginScreen
-    },
     loading: {
       screen: LoadingScreen
     }

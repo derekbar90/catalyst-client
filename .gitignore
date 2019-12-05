@@ -4,3 +4,4 @@ ios/Pods/*
 ios/build/*
 .gradle/*
 android/.gradle/*
+web-build/fonts/FontAwesome.ttf

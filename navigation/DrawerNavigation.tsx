@@ -11,14 +11,7 @@ export default createDrawerNavigator(
       navigationOptions: {
         drawerLabel: 'Main',
       }
-    },
-    login: {
-      screen: LoginScreen,
-      path: 'login',
-      navigationOptions: {
-        drawerLabel: 'Login w/ Detail Output',
-      }
-    },
+    }
   },
   {
     contentComponent: CustomDrawerContentComponent
