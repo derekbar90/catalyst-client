@@ -10,7 +10,8 @@ import { iRootState, Dispatch, select } from '../stores/store'
 
 
 type connectedProps = ReturnType<typeof mapState> &
-    ReturnType<typeof mapDispatch>
+    ReturnType<typeof mapDispatch> &
+    ReturnType<typeof selectMap>
 type Props = connectedProps & { navigation: NavigationScreenProp<NavigationState, NavigationParams> }
 
 class LoginScreen extends Component<Props> {
@@ -22,7 +23,7 @@ class LoginScreen extends Component<Props> {
     const { navigation } = this.props;
     return (
       <View>
-        <Text>Login Screen {JSON.stringify(this.props.user)}</Text>
+        <Text>Login Screen {JSON.stringify(this.props.isLoggedIn)}</Text>
         <Button
           title="Login"
           onPress={() => {
@@ -34,9 +35,11 @@ class LoginScreen extends Component<Props> {
   }
 }
 
-const mapState = (state: iRootState) => select(models => ({
-  user: models.user.isLoggedIn
-}))
+const selectMap = models => ({
+  isLoggedIn: models.user.isLoggedIn
+})
+
+const mapState = (state: iRootState) => select(selectMap)(state, null)
 
 const mapDispatch = (dispatch: Dispatch) => ({
   login: dispatch.user.login,
