@@ -3,7 +3,7 @@
   "displayName": "catalyst-client",
   "expo": {
     "name": "Catalyst",
-    "slug": "expo-template-bare",
+    "slug": "catalyst-project-client",
     "privacy": "unlisted",
     "sdkVersion": "35.0.0",
     "version": "1.0.0",

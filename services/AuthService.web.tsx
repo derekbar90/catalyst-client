@@ -23,16 +23,17 @@ import { StringMap } from "@openid/appauth/built/types";
 import dispatch from "../stores/dispatch";
 import NavigationService from "../navigation/NavigationService";
 import { IAuthService } from "./AuthService";
+import { config } from "../constants/config";
 
 /* the Node.js based HTTP client. */
 const requestor = new FetchRequestor();
 
-let openIdConnectUrl = "https://funk.derekbarrera.com/oauth";
+let openIdConnectUrl = config.oauth_oidc_url;
 
 /* example client configuration */
-const clientId = 'catalyst_app';
-const redirectUri = "https://192.168.4.23:19006/";
-const scope = 'offline_access offline openid';
+const clientId = config.oauth_client_id
+const redirectUri = config.oauth_redirect_uri
+const scope = config.oauth_client_scope;
 
 export class AuthService implements IAuthService {
   private notifier: AuthorizationNotifier;

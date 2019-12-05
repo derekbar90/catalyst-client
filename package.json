@@ -4,6 +4,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web --https",
+    "build-web": "patch-package && BUILD=true expo build:web",
     "start": "react-native start",
     "test": "jest"
   },
@@ -36,12 +37,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
+    "@expo/webpack-config": "^0.10.5",
     "@types/jwt-decode": "^2.2.1",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.57.65",
     "babel-preset-expo": "^7.0.0",
+    "dotenv": "^8.2.0",
     "jest-expo": "^35.0.0",
     "jetifier": "^1.6.4",
+    "patch-package": "^6.2.0",
     "typescript": "^3.4.5"
   },
   "jest": {

@@ -4,6 +4,7 @@ import { Platform, Linking } from 'react-native';
 import * as AppAuth from 'expo-app-auth';
 import { AuthService } from '../../services/AuthService';
 import JwtDecode from 'jwt-decode';
+import { config } from '../../constants/config';
 
 export type UserState = {
   userName?: string,
@@ -14,14 +15,14 @@ export type UserState = {
   tokenType?: string,
 }
 
-export const config = {
-  issuer: 'https://funk.derekbarrera.com/oauth',
-  scopes: ['offline_access', 'offline', 'openid'],
-  redirectUrl: 'org.catalyst.client' + ':/oauthredirect',
-  clientId: 'catalyst_app',
+export const oauth_config = {
+  issuer: config.oauth_oidc_url,
+  scopes: config.oauth_client_scope.split(' '),
+  redirectUrl: config.oauth_redirect_uri,
+  clientId: config.oauth_client_id,
 };
 
-const service = new AuthService(config);
+const service = new AuthService(oauth_config);
 
 const INITIAL_STATE = {
   userName: null,
@@ -48,7 +49,7 @@ const model = {
       if(Platform.OS === 'web'){
         await service.login();
       } else {
-        authState = await AppAuth.authAsync(config);
+        authState = await AppAuth.authAsync(oauth_config);
       }
 
 			dispatch.user.updateAuthState(authState);
