@@ -2,7 +2,7 @@ import { createModel } from '@rematch/core'
 import { Dispatch } from '../store'
 import { Platform, Linking } from 'react-native';
 import * as AppAuth from 'expo-app-auth';
-import { AuthService } from '../../services/AuthService';
+import { AuthService } from '../../services/auth/AuthService';
 import JwtDecode from 'jwt-decode';
 import { config } from '../../constants/config';
 

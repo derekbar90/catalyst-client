@@ -20,10 +20,10 @@ import {
 } from "@openid/appauth/built/token_response";
 
 import { StringMap } from "@openid/appauth/built/types";
-import dispatch from "../stores/dispatch";
-import NavigationService from "../navigation/NavigationService";
+import dispatch from "../../stores/dispatch";
+import NavigationService from "../../navigation/NavigationService";
 import { IAuthService } from "./AuthService";
-import { config } from "../constants/config";
+import { config } from "../../constants/config";
 
 /* the Node.js based HTTP client. */
 const requestor = new FetchRequestor();
