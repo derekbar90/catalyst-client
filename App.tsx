@@ -9,7 +9,7 @@ import { ApolloClient } from '@apollo/client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from "@apollo/react-hooks"
 import { persistCache } from 'apollo-cache-persist';
-import { apolloLinks } from './services/graphql/links';
+import { apolloLinks } from './services/graphql/ApolloLinks';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,7 +23,9 @@ const App: React.FC = () => {
     const cache = new InMemoryCache({});
 
     const client = new ApolloClient({
+      //@ts-ignore
       cache,
+      //@ts-ignore
       link: apolloLinks
     });
 

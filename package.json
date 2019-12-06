@@ -53,6 +53,7 @@
     "@types/react-native": "^0.57.65",
     "babel-preset-expo": "^7.0.0",
     "dotenv": "^8.2.0",
+    "expo-module-scripts": "^1.1.1",
     "jest-expo": "^35.0.0",
     "jetifier": "^1.6.4",
     "patch-package": "^6.2.0",

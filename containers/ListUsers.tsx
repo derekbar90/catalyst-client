@@ -6,7 +6,6 @@ import { iRootState, select } from '../stores/store';
 import { useSelector } from 'react-redux';
 
 interface User {
-  email: string,
   lastName: string,
   firstName: string
 }
@@ -23,7 +22,6 @@ interface GetUsersVars {
 const GET_USERS = gql`
   query users($limit: Int!, $sort: String!){
       users(limit: $limit, sort: $sort){
-        email,
         firstName,
         lastName
       }
@@ -44,7 +42,8 @@ export function UserList() {
       variables: {
         limit: 100,
         sort: "email"
-     }
+     },
+     fetchPolicy: 'network-only'
     }
   );
 

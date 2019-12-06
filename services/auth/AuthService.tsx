@@ -1,5 +1,4 @@
-import * as AppAuth from 'expo-app-auth';
-import { OAuthProps, OAuthRevokeOptions } from 'expo-app-auth';
+import { authAsync, revokeAsync, OAuthProps, OAuthRevokeOptions } from 'expo-app-auth';
 
 export interface IAuthService {
   login: () => Promise<{}>;
@@ -14,7 +13,7 @@ export class AuthService implements IAuthService {
   }
 
   public async login(): Promise<{}> {
-    return AppAuth.authAsync(this.config);
+    return authAsync(this.config);
   }
 
   public async logout(accessToken: string): Promise<boolean> {
@@ -27,7 +26,7 @@ export class AuthService implements IAuthService {
     }
 
     try {
-      await AppAuth.revokeAsync(this.config, revokeOptions)
+      await revokeAsync(this.config, revokeOptions)
       return true
     } catch (e) {
       console.log(e.message)
