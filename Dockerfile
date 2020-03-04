@@ -13,7 +13,7 @@ WORKDIR $SUPPORTING_FILES
 
 ADD package.json .
 
-RUN npm -g serve
+RUN npm -g expo-cli serve
 RUN npm install
 
 COPY . $SUPPORTING_FILES
