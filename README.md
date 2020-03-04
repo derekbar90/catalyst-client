@@ -14,8 +14,8 @@ This repo is for the client which can be used to build ontop of the catalyst bac
 
 ## Initial setup
 
-Run `npm i` first to setup any global dev tools which are used. These are defined in the `package.json` which is at the root of the project.
-
+- Run `npm i` first to setup any global dev tools which are used. These are defined in the `package.json` which is at the root of the project.
+- Setup catalyst backend hostname in client/constants/config.tsx
 ## Global NPM Scripts
 
 ### Project Specific:

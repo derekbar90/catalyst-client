@@ -1,44 +1,46 @@
 import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
+const HOST_NAME = 'CATALYST_BACKEND_HOST';
+
 const environments = {
   "dev": {
-    apiHost: "https://funk.derekbarrera.com",
+    apiHost: `${HOST_NAME}`,
     oauth_client_id: "catalyst_app",
     oauth_client_scope: 'offline_access offline openid',
-    oauth_oidc_url: "https://funk.derekbarrera.com/oauth",
+    oauth_oidc_url: `${HOST_NAME}/oauth`,
     oauth_redirect_uri: Platform.select({
       web: input => 'https://localhost:19006',
       default: input => 'org.catalyst.client:/oauthredirect',
     })()
   },
   "staging": {
-    apiHost: "https://funk.derekbarrera.com",
+    apiHost: `${HOST_NAME}`,
     oauth_client_id: "catalyst_app",
     oauth_client_scope: 'offline_access offline openid',
-    oauth_oidc_url: "https://funk.derekbarrera.com/oauth",
+    oauth_oidc_url: `${HOST_NAME}/oauth`,
     oauth_redirect_uri: Platform.select({
-      web: input => 'https://funk.derekbarrera.com',
+      web: input => `${HOST_NAME}`,
       default: input => 'org.catalyst.client:/oauthredirect',
     })()
   },
   "qa": {
-    apiHost: "https://funk.derekbarrera.com",
+    apiHost: `${HOST_NAME}`,
     oauth_client_id: "catalyst_app",
     oauth_client_scope: 'offline_access offline openid',
-    oauth_oidc_url: "https://funk.derekbarrera.com/oauth",
+    oauth_oidc_url: `${HOST_NAME}/oauth`,
     oauth_redirect_uri: Platform.select({
-      web: input => 'https://funk.derekbarrera.com',
+      web: input => `${HOST_NAME}`,
       default: input => 'org.catalyst.client:/oauthredirect',
     })()
   },
   "prod": {
-    apiHost: "https://funk.derekbarrera.com",
+    apiHost: `${HOST_NAME}`,
     oauth_client_id: "catalyst_app",
     oauth_client_scope: 'offline_access offline openid',
-    oauth_oidc_url: "https://funk.derekbarrera.com/oauth",
+    oauth_oidc_url: `${HOST_NAME}/oauth`,
     oauth_redirect_uri: Platform.select({
-      web: input => 'https://funk.derekbarrera.com',
+      web: input => `${HOST_NAME}`,
       default: input => 'org.catalyst.client:/oauthredirect',
     })()
   }
