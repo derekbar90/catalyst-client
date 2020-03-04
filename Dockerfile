@@ -18,4 +18,4 @@ RUN npm install
 
 COPY . $SUPPORTING_FILES
 
-RUN npm run build
+RUN npm run build-web
