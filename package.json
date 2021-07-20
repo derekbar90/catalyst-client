@@ -33,7 +33,7 @@
     "serve": "11.3.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
-    "react-native": "0.59.10",
+    "react-native": "0.62.3",
     "react-native-app-auth": "^4.4.0",
     "react-native-gesture-handler": "^1.6.0",
     "react-native-reanimated": "^1.7.0",
